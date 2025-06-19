@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Startup Tribe (SST)</title>
+    <style>
+        /* EXACT COLOR PALETTE FROM ANALYSIS */
+        :root {
+            --bg-beige: #F5F1EA;        /* Light beige background */
+            --text-dark: #3A3226;       /* Dark brown headings */
+            --text-medium: #5D5346;     /* Medium brown text */
+            --text-light: #8B7D6B;      /* Light brown secondary text */
+            --accent: #A68A64;          /* Warm accent color */
+            --card-beige: #F8F4EF;      /* Slightly off card background */
+            --divider: #D8D1C7;         /* Soft divider color */
+        }
+
+        /* FONTS */
+        body {
+            font-family: 'Merriweather', Georgia, serif;
+            color: var(--text-medium);
+            line-height: 1.6;
+            background-color: var(--bg-beige);
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--text-dark);
+            font-weight: 700;
+        }
+
+        /* LAYOUT */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(rgba(245, 241, 234, 0.9), rgba(245, 241, 234, 0.9)), 
+                        url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1484&q=80');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: var(--text-medium);
+        }
+
+        /* BUTTON */
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 14px 32px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #8C6F4A;
+            transform: translateY(-2px);
+        }
+
+        /* BLOG SECTION */
+        .blog-section {
+            background-color: var(--bg-beige);
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .blog-card {
+            background-color: var(--card-beige);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .blog-img {
+            height: 220px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .blog-content {
+            padding: 25px;
+        }
+
+        .blog-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .blog-content p {
+            color: var(--text-medium);
+            margin-bottom: 20px;
+        }
+
+        /* CARDS SECTION */
+        .cards-section {
+            background-color: var(--bg-beige);
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .card {
+            background-color: var(--card-beige);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card-img {
+            height: 220px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 25px;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            color: var(--text-medium);
+            margin-bottom: 20px;
+        }
+
+        /* EVENTS SECTION */
+        .events {
+            background-color: white;
+            padding: 80px 0;
+        }
+
+        .event-card {
+            background-color: var(--card-beige);
+            border-radius: 8px;
+            padding: 30px;
+            margin: 0 auto 40px;
+            max-width: 800px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .event-title {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .event-date {
+            color: var(--text-light);
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .event-link {
+            color: var(--accent);
+            display: block;
+            margin-bottom: 20px;
+            word-break: break-all;
+        }
+
+        /* CONTENT SECTIONS */
+        .content-section {
+            background-color: var(--bg-beige);
+        }
+
+        .content-block {
+            margin-bottom: 50px;
+        }
+
+        .divider {
+            border: 0;
+            height: 1px;
+            background-color: var(--divider);
+            margin: 50px 0;
+        }
+
+        /* TECHNOLOGY SECTION */
+        .technology {
+            background-color: white;
+        }
+
+        .tech-feature {
+            margin-bottom: 40px;
+        }
+
+        /* FOOTER */
+        .footer {
+            background-color: var(--text-dark);
+            color: var(--card-beige);
+            padding: 80px 0 40px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-column h3 {
+            color: var(--card-beige);
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+        }
+
+        .footer-column p, .footer-column a {
+            color: var(--text-light);
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+
+        .footer-column a {
+            display: block;
+            text-decoration: none;
+        }
+
+        .footer-column a:hover {
+            color: var(--card-beige);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid var(--text-light);
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- HERO SECTION -->
+    <section class="hero section">
+        <div class="container">
+            <h1>Student startup Tribe (SST)</h1>
+            <p>Ignite Your Startup</p>
+            <p>Join us in our mission to support college entrepreneurs through education, mentorship, and community. Together, let's reduce risks and amplify the validation process for your startup.</p>
+            <a href="#" class="btn">Get Started</a>
+        </div>
+    </section>
+
+    <!-- BLOG SECTION -->
+    <section class="blog-section section">
+        <div class="container">
+            <h2>Latest Articles</h2>
+            <div class="blog-grid">
+                <div class="blog-card">
+                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Sustainable Ventures" class="blog-img">
+                    <div class="blog-content">
+                        <h3>Building Sustainable Ventures: SST Approach</h3>
+                        <p>Discover how our methodology focuses on sustainable growth from day one with proven frameworks for student entrepreneurs.</p>
+                        <a href="\sst.html" class="btn">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="blog-card">
+                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="College Entrepreneurs" class="blog-img">
+                    <div class="blog-content">
+                        <h3>Empowering College Entrepreneurs</h3>
+                        <p>Learn how we bridge the gap between ideas and execution for student founders across universities.</p>
+                        <a href="\college.html" class="btn">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="blog-card">
+                    <img src="https://images.unsplash.com/photo-1521791055366-0d553872125f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Community Advantage" class="blog-img">
+                    <div class="blog-content">
+                        <h3>Accelerate Validation: SST Community</h3>
+                        <p>How our vibrant community of like-minded innovators helps accelerate your entrepreneurial journey.</p>
+                        <a href="\article.html" class="btn">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURED PROGRAMS CARDS -->
+    <section class="cards-section section">
+        <div class="container">
+            <h2>Our Featured Programs</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Startup Incubator" class="card-img">
+                    <div class="card-content">
+                        <h3>Startup Incubator</h3>
+                        <p>Our 12-week intensive program provides the resources, mentorship, and funding opportunities to transform your idea into a viable business.</p>
+                        <a href="\incubalator.html" class="btn">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1573497491765-dccce02b29df?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Mentorship Network" class="card-img">
+                    <div class="card-content">
+                        <h3>Mentorship Network</h3>
+                        <p>Connect with successful entrepreneurs and industry experts who provide personalized guidance throughout your startup journey.</p>
+                        <a href="\mentor.html" class="btn">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Funding Opportunities" class="card-img">
+                    <div class="card-content">
+                        <h3>Funding Opportunities</h3>
+                        <p>Access our network of angel investors and venture capitalists actively looking to fund promising student-led startups.</p>
+                        <a href="\opportunity.html" class="btn">View Opportunities</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EVENTS SECTION -->
+    <section class="events section">
+        <div class="container">
+            <h2>Upcoming Events</h2>
+            <div class="event-card">
+                <h3 class="event-title">Investor Meet and Pitch Night</h3>
+                <div class="event-date">20 Jun 2025 to 30 Jun 2025 daily at 5:04 to 6:04 pm</div>
+                <a href="https://us05web.zoom.us/j/86384865073?pwd=wkrgvgbx5Pl6n69bafbbarrPkkvTEe.1" class="event-link">https://us05web.zoom.us/j/86384865073?pwd=wkrgvgbx5Pl6n69bafbbarrPkkvTEe.1</a>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdbyC0eHPH5yyZDJGItG7SSXRtCMyhHvWYm5jW5oeXW1PfKiQ/viewform?usp=header" class="btn">Register Now</a>
+            </div>
+            <h2>Our Services</h2>
+        </div>
+    </section>
+
+    <!-- CONTENT SECTION -->
+<section class="content-section section">
+  <div class="container">
+
+    <div class="content-block">
+      <h1>Building Sustainable Ventures: The SST Approach</h1>
+      <p>
+        In India’s fast-evolving startup landscape, launching a business as a student can be both exhilarating and daunting. At <strong>Student Startup Tribe (SST)</strong>, we believe that sustainable ventures aren’t built overnight — they’re designed with intention from the start. That’s why our programs help student founders avoid common pitfalls and build resilient, scalable businesses.
+      </p>
+      <ul>
+        <li><strong>Hands-on mentorship:</strong> Learn from founders, VCs, and operators who’ve built and scaled successful ventures.</li>
+        <li><strong>Long-term focus:</strong> We emphasize impact, sustainability, and clear execution over hype.</li>
+        <li><strong>Validation + funding access:</strong> From MVP testing to investor-ready pitch decks, we support you every step of the way.</li>
+      </ul>
+    </div>
+
+    <div class="content-block">
+      <h2>Empowering College Entrepreneurs</h2>
+      <p>
+        Got a bold idea but don’t know where to start? SST exists for student founders like you. Whether you're building a side project or your future company, we help you bridge the gap between classroom inspiration and real-world execution.
+      </p>
+      <ul>
+        <li><strong>Personalized mentorship:</strong> Work 1-on-1 with startup founders and domain experts.</li>
+        <li><strong>Investor readiness:</strong> Connect with early-stage backers who believe in student-led innovation.</li>
+        <li><strong>Startup toolkit:</strong> Access curated tools, templates, and playbooks designed for college entrepreneurs.</li>
+      </ul>
+    </div>
+
+    <div class="content-block">
+      <h2>Accelerate Validation: The SST Community Advantage</h2>
+      <p>
+        No founder should build in isolation. That’s why SST is more than a program — it’s a tribe. Our peer-driven ecosystem connects you with the right people at the right time: mentors, collaborators, and investors who accelerate your growth.
+      </p>
+      <ul>
+        <li><strong>MVP feedback loops:</strong> Test your solution with real users and iterate fast.</li>
+        <li><strong>Pitch to investors:</strong> Demo Day lets you showcase your startup to angels and early-stage VCs.</li>
+        <li><strong>Warm introductions:</strong> We actively connect top-performing startups to funding opportunities across our partner network.</li>
+      </ul>
+    </div>     
+            <div class="divider"></div>
+            
+            <div class="content-block">
+                <h2>Our Story</h2>
+                <p>At Student Startup Tribe, we are dedicated to guiding and empowering college entrepreneurs on their startup journey. Our platform provides the necessary tools, resources, and mentorship to foster growth and success.</p>
+                <p>Through a blend of educational resources, mentorship programs, and community engagement, we aim to create a supportive environment that nurtures innovation and entrepreneurial spirit. Join us today in shaping a brighter future.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- TECHNOLOGY SECTION -->
+    <section class="technology section">
+        <div class="container">
+            <h1>Our Technology Platform</h1>
+            <h2>Innovative Solutions for Startups</h2>
+            <p>Our technology is designed to streamline the startup process, providing advanced tools and features to enhance efficiency and productivity at every stage of your journey.</p>
+            
+            <div class="divider"></div>
+            
+            <div class="tech-feature">
+                <h3>Educational Resources Portal</h3>
+                <p>Access a wealth of educational materials, video tutorials, and interactive courses to boost your entrepreneurial skills and knowledge. Our curated content is tailored specifically for student entrepreneurs.</p>
+            </div>
+            
+            <div class="tech-feature">
+                <h3>Mentorship Matching System</h3>
+                <p>Our intelligent matching algorithm connects you with experienced mentors who will guide you through the complexities of startup development and growth, based on your specific needs and industry.</p>
+            </div>
+            
+            <div class="tech-feature">
+                <h3>Community Collaboration Hub</h3>
+                <p>Engage with our vibrant community forums to share insights, find co-founders, and collaborate on projects. Our platform facilitates meaningful connections that drive innovation.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer section">
+        <div class="container">
+            <div class="footer-content">
+                
+                <div class="footer-column">
+                    <h3>Events Calendar</h3>
+                    <p>Monthly Founder Forums</p>
+                    <p>Quarterly Demo Days</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Challenges</h3>
+                    <p>Annual Innovation Challenge</p>
+                    <p>Startup Hackathons</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Student Startup Tribe</h3>
+                    <p>+91 93092 68480</p>
+                    <p>student.startup.tribe@gmail.com</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>Privacy Policy</p>
+                <p>Accounting Statement</p>
+                <p>Terms & Conditions</p>
+                <p>Refund Policy</p>
+                <p>© 2025 by Student startup Tribe (SST).</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
